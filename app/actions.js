@@ -1,5 +1,15 @@
 export const actionTypes = {
+  SET_MODE: 'SET_MODE',
   SET_LEVEL: 'SET_LEVEL',
+}
+
+function setMode(mode) {
+  return {
+    type: actionTypes.SET_MODE,
+    payload: {
+      mode,
+    },
+  }
 }
 
 function setLevel(level) {
@@ -12,6 +22,7 @@ function setLevel(level) {
 }
 
 export const actions = {
+  setMode,
   setLevel,
 }
 
