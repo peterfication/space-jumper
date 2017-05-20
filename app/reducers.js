@@ -14,16 +14,21 @@ export default function reducer(
 ) {
   switch (action.type) {
     case actionTypes.DIE: {
+      const { board, startPosition } = levels[state.level]
+
+      // Reduce live and reset level
       return update(state, {
+        board: { $set: board },
         lives: { $set: (state.lives - 1) },
+        position: { $set: startPosition },
       })
     }
     case actionTypes.KEY_DOWN: {
       const { keyCode } = action.payload
       const { position } = state
-      let x = position[0]
-      let y = position[1]
+      let [x, y] = position
 
+      // Movements
       if (keyCode === 38) { // up
         y -= 1
       } else if (keyCode === 40) { // down
