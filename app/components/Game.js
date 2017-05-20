@@ -13,39 +13,49 @@ export class Game extends React.Component {
       actions: PT.shape({
         setMode: PT.func,
         setLevel: PT.func,
+        die: PT.func,
       }),
+      lives: PT.number,
       level: PT.number,
     }
-  }
-
-  constructor(props) {
-    super(props)
-
-    this.setLevel = this.setLevel.bind(this)
-    this.gameOver = this.gameOver.bind(this)
   }
 
   setLevel(level) {
     this.props.actions.setLevel(level)
   }
 
+  die() {
+    this.props.actions.die()
+  }
+
   gameOver() {
-    this.props.actions.setLevel(0)
     this.props.actions.setMode('game-over')
   }
 
   render() {
-    const { level } = this.props
+    const {
+      lives,
+      level,
+    } = this.props
+
+    if (lives === 0) {
+      this.gameOver()
+    }
 
     return (
       <div className={styles['game-container']}>
-        <div className={styles.level}>
-          Level {level}
+        <div className={styles['game-header']}>
+          <div className={styles.level}>
+            Level {level}
+          </div>
+          <div className={styles.lives}>
+            Lives {lives}
+          </div>
         </div>
         <button onClick={() => this.setLevel(this.props.level + 1)}>
           Increase Level
         </button>
-        <button onClick={() => this.gameOver()}>
+        <button onClick={() => this.die()}>
           Die
         </button>
       </div>
@@ -55,6 +65,7 @@ export class Game extends React.Component {
 
 export default connect(
   state => ({
+    lives: state.lives,
     level: state.level,
   }),
   dispatch => ({
