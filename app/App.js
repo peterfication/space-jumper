@@ -20,6 +20,7 @@ export class App extends React.Component {
       actions: PT.shape({
         setMode: PT.func,
         prepareGame: PT.func,
+        keyDown: PT.func,
       }),
       mode: PT.string,
     }
@@ -31,6 +32,16 @@ export class App extends React.Component {
     this.showAbout = this.showAbout.bind(this)
     this.showMenu = this.showMenu.bind(this)
     this.startGame = this.startGame.bind(this)
+  }
+
+  componentWillMount() {
+    const self = this
+
+    const handleKeyDown = (e) => {
+      self.props.actions.keyDown(e.keyCode)
+    }
+
+    document.addEventListener('keydown', handleKeyDown, false)
   }
 
   startGame() {

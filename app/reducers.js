@@ -18,6 +18,26 @@ export default function reducer(
         lives: { $set: (state.lives - 1) },
       })
     }
+    case actionTypes.KEY_DOWN: {
+      const { keyCode } = action.payload
+      const { position } = state
+      let x = position[0]
+      let y = position[1]
+
+      if (keyCode === 38) { // up
+        y -= 1
+      } else if (keyCode === 40) { // down
+        y += 1
+      } else if (keyCode === 37) { // left
+        x -= 1
+      } else if (keyCode === 39) { // right
+        x += 1
+      }
+
+      return update(state, {
+        position: { $set: [x, y] },
+      })
+    }
     case actionTypes.PREPARE_GAME: {
       return update(state, {
         level: { $set: 1 },
