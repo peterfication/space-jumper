@@ -1,0 +1,29 @@
+.container {
+  position: relative;
+  width: 94%;
+  max-width: 570px;
+  top: 20px;
+  left: 50%;
+  margin-left: -300px;
+  background: #FFFFFF;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, .2);
+}
+
+.button {
+  text-align: center;
+  width: 100%;
+  padding: 15px 0;
+  border: 1px solid #EEE;
+  cursor: pointer;
+  margin: 5px 0;
+  border-radius: 3px;
+  background: #FFF;
+  font-size: 16px;
+
+  &:hover {
+    background: #CCC;
+    color: #FFF;
+  }
+}

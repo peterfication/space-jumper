@@ -1,0 +1,17 @@
+@import '../styles/elements';
+
+.menu-container {
+  @extend .container;
+
+  max-width: 270px;
+  margin-left: -150px;
+  display: flex;
+  flex-direction: column;
+
+  a {
+    @extend .button;
+
+    flex: 1;
+    margin: 5px 0;
+  }
+}

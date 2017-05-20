@@ -1,0 +1,56 @@
+h1, h2, h3, h4, h5, h6, p, a, i, b, strong, span, div, input {
+  font-size: 16px;
+  line-height: 18px;
+  font-family: 'Lato', 'Arial', sans-serif;
+}
+
+h1 {
+  font-size: 160%;
+}
+
+h2 {
+  font-size: 150%;
+}
+
+h3 {
+  font-size: 140%;
+}
+
+h4 {
+  font-size: 130%;
+}
+
+h5 {
+  font-size: 120%;
+}
+
+h6 {
+  font-size: 110%;
+}
+
+p {
+  font-size: 100%;
+  padding-bottom: 4px;
+}
+
+a {
+  text-decoration: none;
+  color: initial;
+}
+
+blockquote {
+  &:before,
+  &:after {
+    content: '';
+    content: none;
+  }
+}
+
+q {
+  &:before,
+  &:after {
+    content: '';
+    content: none;
+  }
+}
+

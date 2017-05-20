@@ -1,0 +1,9 @@
+@import '../styles/elements';
+
+.game-over-container {
+  @extend .container;
+
+  button {
+    @extend .button
+  }
+}

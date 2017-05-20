@@ -1,0 +1,9 @@
+@import '../styles/elements';
+
+.about-container {
+  @extend .container;
+
+  button {
+    @extend .button;
+  }
+}
