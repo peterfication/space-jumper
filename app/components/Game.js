@@ -23,6 +23,18 @@ export class Game extends React.Component {
     }
   }
 
+  componentDidUpdate() {
+    const { lives } = this.props
+
+    if (lives === 0) {
+      this.gameOver()
+    }
+
+    if (!this.positionHasPlatform()) {
+      this.die()
+    }
+  }
+
   setLevel(level) {
     this.props.actions.setLevel(level)
   }
@@ -35,6 +47,24 @@ export class Game extends React.Component {
     this.props.actions.setMode('game-over')
   }
 
+  // Check whether the player is on a platform
+  positionHasPlatform() {
+    const {
+      board,
+      position,
+    } = this.props
+    const [x, y] = position
+
+    const row = board[y]
+    // Check if player is outside of board
+    if (!row) {
+      return false
+    }
+
+    const cell = row[x]
+    return cell === 1
+  }
+
   render() {
     const {
       board,
@@ -42,10 +72,6 @@ export class Game extends React.Component {
       level,
       position,
     } = this.props
-
-    if (lives === 0) {
-      this.gameOver()
-    }
 
     return (
       <div className={styles['game-container']}>

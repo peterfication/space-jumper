@@ -18,9 +18,7 @@ export class GameBoard extends React.Component {
   }
 
   render() {
-    const {
-      board,
-    } = this.props
+    const { board } = this.props
 
     return (
       <div className={styles['game-board']}>
