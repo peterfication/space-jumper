@@ -1,0 +1,16 @@
+@import '../styles/elements';
+
+.game-container {
+  @extend .container;
+
+  .level {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  button {
+    @extend .button;
+  }
+}

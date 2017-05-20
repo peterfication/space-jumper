@@ -1,0 +1,12 @@
+@import './colors';
+@import './typographie';
+@import './variables';
+
+.container {
+  position: fixed;
+  width: 100%;
+  height: calc(100vh - #{$headerHeight});
+  left: 0;
+  top: $headerHeight;
+  background-color: $contentBackground;
+}

@@ -1,16 +1,18 @@
 import PT from 'prop-types'
 import React from 'react'
 
+import styles from './menu.scss'
+
 const Menu = props => (
-  <div>
-    <a onClick={() => props.start()}>
-      Start
-    </a>
+  <div className={styles['menu-container']}>
+    <a onClick={() => props.startGame()}>Start</a>
+    <a onClick={() => props.showAbout()}>About</a>
   </div>
 )
 
 Menu.propTypes = {
-  start: PT.func,
+  showAbout: PT.func,
+  startGame: PT.func,
 }
 
 export default Menu

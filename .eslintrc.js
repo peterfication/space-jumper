@@ -31,8 +31,6 @@ module.exports = {
   // https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules
   rules: {
 
-    // Added by store2be
-
     semi: [2, 'never'],
     'no-multi-spaces': 1,
     'key-spacing': [1, { mode: 'strict' }],

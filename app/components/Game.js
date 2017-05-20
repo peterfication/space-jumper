@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import { actions } from '../actions'
+import styles from './game.scss'
 
 export class Game extends React.Component {
 
@@ -30,23 +31,23 @@ export class Game extends React.Component {
 
   gameOver() {
     this.props.actions.setLevel(0)
-    this.props.actions.setMode('menu')
+    this.props.actions.setMode('game-over')
   }
 
   render() {
     const { level } = this.props
 
     return (
-      <div>
+      <div className={styles['game-container']}>
+        <div className={styles.level}>
+          Level {level}
+        </div>
         <button onClick={() => this.setLevel(this.props.level + 1)}>
           Increase Level
         </button>
         <button onClick={() => this.gameOver()}>
           Die
         </button>
-        <div>
-          {level}
-        </div>
       </div>
     )
   }

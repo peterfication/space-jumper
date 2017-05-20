@@ -4,8 +4,13 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import { actions } from './actions'
+import About from './components/About'
 import Game from './components/Game'
+import GameOver from './components/GameOver'
+import Header from './components/Header'
 import Menu from './components/Menu'
+
+import layout from './styles/layout.scss'
 
 export class App extends React.Component {
 
@@ -22,12 +27,22 @@ export class App extends React.Component {
   constructor(props) {
     super(props)
 
-    this.start = this.start.bind(this)
+    this.showAbout = this.showAbout.bind(this)
+    this.showMenu = this.showMenu.bind(this)
+    this.startGame = this.startGame.bind(this)
   }
 
-  start() {
+  startGame() {
     this.props.actions.setLevel(1)
     this.props.actions.setMode('game')
+  }
+
+  showAbout() {
+    this.props.actions.setMode('about')
+  }
+
+  showMenu() {
+    this.props.actions.setMode('menu')
   }
 
   render() {
@@ -35,9 +50,18 @@ export class App extends React.Component {
 
     return (
       <div>
-        Space Jumper
-        {mode === 'menu' && <Menu start={this.start} />}
-        {mode === 'game' && <Game />}
+        <Header />
+        <div className={layout.container}>
+          {mode === 'menu' &&
+            <Menu
+              showAbout={this.showAbout}
+              startGame={this.startGame}
+            />
+          }
+          {mode === 'about' && <About showMenu={this.showMenu} />}
+          {mode === 'game-over' && <GameOver showMenu={this.showMenu} />}
+          {mode === 'game' && <Game />}
+        </div>
       </div>
     )
   }
