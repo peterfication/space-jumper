@@ -18,7 +18,7 @@ export class App extends React.Component {
     return {
       actions: PT.shape({
         setMode: PT.func,
-        setLevel: PT.func,
+        prepareGame: PT.func,
       }),
       mode: PT.string,
     }
@@ -33,7 +33,7 @@ export class App extends React.Component {
   }
 
   startGame() {
-    this.props.actions.setLevel(1)
+    this.props.actions.prepareGame()
     this.props.actions.setMode('game')
   }
 
