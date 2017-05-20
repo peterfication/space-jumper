@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import { actions } from '../actions'
+import GameBoard from './GameBoard'
 import styles from './game.scss'
 
 export class Game extends React.Component {
@@ -15,8 +16,10 @@ export class Game extends React.Component {
         setLevel: PT.func,
         die: PT.func,
       }),
+      board: PT.arrayOf(PT.array),
       lives: PT.number,
       level: PT.number,
+      position: PT.array,
     }
   }
 
@@ -34,8 +37,10 @@ export class Game extends React.Component {
 
   render() {
     const {
+      board,
       lives,
       level,
+      position,
     } = this.props
 
     if (lives === 0) {
@@ -52,6 +57,10 @@ export class Game extends React.Component {
             Lives {lives}
           </div>
         </div>
+        <GameBoard
+          board={board}
+          position={position}
+        />
         <button onClick={() => this.setLevel(this.props.level + 1)}>
           Increase Level
         </button>
@@ -65,8 +74,10 @@ export class Game extends React.Component {
 
 export default connect(
   state => ({
+    board: state.board,
     lives: state.lives,
     level: state.level,
+    position: state.position,
   }),
   dispatch => ({
     actions: bindActionCreators(actions, dispatch),

@@ -7,6 +7,7 @@ import { actions } from './actions'
 import About from './components/About'
 import Game from './components/Game'
 import GameOver from './components/GameOver'
+import GameVictory from './components/GameVictory'
 import Header from './components/Header'
 import Menu from './components/Menu'
 
@@ -59,8 +60,9 @@ export class App extends React.Component {
             />
           }
           {mode === 'about' && <About showMenu={this.showMenu} />}
-          {mode === 'game-over' && <GameOver showMenu={this.showMenu} />}
           {mode === 'game' && <Game />}
+          {mode === 'game-victory' && <GameVictory showMenu={this.showMenu} />}
+          {mode === 'game-over' && <GameOver showMenu={this.showMenu} />}
         </div>
       </div>
     )

@@ -1,0 +1,32 @@
+.game-board {
+  width: 100%;
+  height: 400px;
+  flex-direction: column;
+  display: flex;
+
+  .game-board-row {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+
+    .game-board-cell {
+      flex: 1;
+      padding: 2px;
+
+      .platform {
+        width: calc(80% - 2px);
+        height: calc(80% - 2px);
+        padding: 10%;
+        background: #CCC;
+        border-radius: 3px;
+
+        .player {
+          border-radius: 5px;
+          width: 100%;
+          height: 100%;
+          background: #e67e22;
+        }
+      }
+    }
+  }
+}
