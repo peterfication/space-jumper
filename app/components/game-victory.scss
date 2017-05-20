@@ -1,0 +1,9 @@
+@import '../styles/elements';
+
+.game-victory-container {
+  @extend .container;
+
+  button {
+    @extend .button
+  }
+}

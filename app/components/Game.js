@@ -35,7 +35,6 @@ export class Game extends React.Component {
     this.props.actions.setMode('game-over')
   }
 
-
   render() {
     const {
       board,

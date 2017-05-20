@@ -12,7 +12,7 @@ export class GameBoard extends React.Component {
     }
   }
 
-  isPosition(rowIndex, colIndex) {
+  cellIsPosition(rowIndex, colIndex) {
     return (colIndex === this.props.position[0] &&
       rowIndex === this.props.position[1])
   }
@@ -36,7 +36,7 @@ export class GameBoard extends React.Component {
               >
                 {cell === 1 &&
                   <div className={styles.platform}>
-                    {this.isPosition(rowIndex, colIndex) &&
+                    {this.cellIsPosition(rowIndex, colIndex) &&
                       <div className={styles.player} />
                     }
                   </div>

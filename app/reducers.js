@@ -28,10 +28,20 @@ export default function reducer(
     }
     case actionTypes.SET_LEVEL: {
       const level = action.payload.level
+      const levelData = levels[level]
+
+      if (levelData) {
+        const { board, startPosition } = levelData
+        return update(state, {
+          level: { $set: level },
+          board: { $set: board },
+          position: { $set: startPosition },
+        })
+      }
+
+      // No level available anymore => Victory
       return update(state, {
-        level: { $set: level },
-        board: { $set: levels[level].board },
-        position: { $set: levels[level].startPosition },
+        mode: { $set: 'game-victory' },
       })
     }
     case actionTypes.SET_MODE: {
