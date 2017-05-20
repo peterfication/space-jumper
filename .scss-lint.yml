@@ -1,0 +1,145 @@
+severity: error
+
+linters:
+
+  BorderZero:
+    enabled: true
+    convention: zero
+
+  BemDepth:
+    enabled: true
+
+  ChainedClasses:
+    enabled: true
+
+  ColorVariable:
+    enabled: false
+
+  DeclarationOrder:
+    enabled: false
+
+  DuplicateProperty:
+    enabled: true
+
+  EmptyLineBetweenBlocks:
+    enabled: true
+
+  EmptyRule:
+    enabled: true
+
+  ExtendDirective:
+    enabled: true
+
+  HexValidation:
+    enabled: true
+
+  IdSelector:
+    enabled: true
+
+  ImportantRule:
+    enabled: true
+
+  ImportPath:
+    enabled: true
+
+  Indentation:
+    enabled: true
+
+  LeadingZero:
+    enabled: false
+
+  MergeableSelector:
+    enabled: true
+
+  NameFormat:
+    enabled: true
+
+  NestingDepth:
+    enabled: true
+
+  PropertyCount:
+    enabled: true
+    max_properties: 10
+    include_nested: true
+
+  PropertySortOrder:
+    enabled: true
+    preset: concentric
+
+  PropertySpelling:
+    enabled: true
+
+  PseudoElement:
+    enabled: false
+
+  QualifyingElement:
+    enabled: true
+
+  SelectorFormat:
+    enabled: true
+    convention: hyphenated_BEM
+    class_convention: ^(?!js-).*
+    class_convention_explanation: should not be written in the form js-*
+
+  SelectorDepth:
+    enabled: true
+
+  Shorthand:
+    enabled: true
+
+  SingleLinePerProperty:
+    enabled: true
+    allow_single_line_rule_sets: false
+
+  SingleLinePerSelector:
+    enabled: true
+
+  SpaceAfterComma:
+    enabled: true
+
+  SpaceAfterCommend:
+    enabled: true
+
+  SpaceAfterPropertyColon:
+    enabled: true
+
+  SpaceAfterPropertyName:
+    enabled: true
+
+  SpaceAfterVariableColon:
+    enabled: true
+
+  SpaceAfterVariableName:
+    enabled: true
+
+  SpaceAroundOperator:
+    enabled: true
+
+  SpaceBeforeBrace:
+    enabled: true
+
+  SpaceBetweenParens:
+    enabled: true
+
+  StringQuotes:
+    enabled: true
+    style: single_quotes
+
+  TrailingSemicolon:
+    enabled: true
+
+  UnnecessaryMantissa:
+    enabled: true
+
+  UnnecessaryParentReference:
+    enabled: true
+
+  UrlQuotes:
+    enabled: true
+
+  VendorPrefix:
+    enabled: true
+
+  ZeroUnit:
+    enabled: true
+

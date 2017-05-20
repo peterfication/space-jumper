@@ -1,0 +1,6 @@
+node_modules/
+npm-debug.log
+yarn-error.log
+build/
+e2e/reports/
+hs_err*.log
