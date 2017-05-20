@@ -4,40 +4,40 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import { actions } from './actions'
+import Game from './components/Game'
+import Menu from './components/Menu'
 
 export class App extends React.Component {
 
   static get propTypes() {
     return {
       actions: PT.shape({
+        setMode: PT.func,
         setLevel: PT.func,
       }),
-      level: PT.number,
+      mode: PT.string,
     }
   }
 
   constructor(props) {
     super(props)
 
-    this.setLevel = this.setLevel.bind(this)
+    this.start = this.start.bind(this)
   }
 
-  setLevel(level) {
-    this.props.actions.setLevel(level)
+  start() {
+    this.props.actions.setLevel(1)
+    this.props.actions.setMode('game')
   }
 
   render() {
+    const { mode } = this.props
+
     return (
       <div>
         Space Jumper
-        <div>
-          <button onClick={() => this.setLevel(this.props.level + 1)}>
-            Increase Level
-          </button>
-        </div>
-        <div>
-          {this.props.level}
-        </div>
+        {mode === 'menu' && <Menu start={this.start} />}
+        {mode === 'game' && <Game />}
       </div>
     )
   }
@@ -45,7 +45,7 @@ export class App extends React.Component {
 
 export default connect(
   state => ({
-    level: state.level,
+    mode: state.mode,
   }),
   dispatch => ({
     actions: bindActionCreators(actions, dispatch),
