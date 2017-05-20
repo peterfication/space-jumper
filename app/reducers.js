@@ -1,11 +1,14 @@
 import update from 'react/lib/update'
 import { actionTypes } from './actions'
 
+import levels from './levels'
+
 export default function reducer(
   state = {
     level: 0,
     mode: 'menu',
     lives: 5,
+    position: [0, 0],
   },
   action = {},
 ) {
@@ -19,11 +22,16 @@ export default function reducer(
       return update(state, {
         level: { $set: 1 },
         lives: { $set: 5 },
+        board: { $set: levels[1].board },
+        position: { $set: levels[1].startPosition },
       })
     }
     case actionTypes.SET_LEVEL: {
+      const level = action.payload.level
       return update(state, {
-        level: { $set: action.payload.level },
+        level: { $set: level },
+        board: { $set: levels[level].board },
+        position: { $set: levels[level].startPosition },
       })
     }
     case actionTypes.SET_MODE: {
