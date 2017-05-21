@@ -14,9 +14,9 @@
       padding: 2px;
 
       .platform {
-        width: calc(80% - 2px);
-        height: calc(80% - 2px);
-        padding: 10%;
+        width: calc(80% - 2px - 7px);
+        height: calc(80% - 2px - 7px);
+        padding: 5px;
         background: #CCC;
         border-radius: 3px;
 

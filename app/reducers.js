@@ -9,6 +9,7 @@ export default function reducer(
     mode: 'menu',
     lives: 5,
     position: [0, 0],
+    board: [],
   },
   action = {},
 ) {
@@ -26,7 +27,11 @@ export default function reducer(
     case actionTypes.KEY_DOWN: {
       const { keyCode } = action.payload
       const { position } = state
+      const board = JSON.parse(JSON.stringify(state.board))
       let [x, y] = position
+
+      // Remove previous platform from board
+      board[y][x] = 0
 
       // Movements
       if (keyCode === 38) { // up
@@ -40,6 +45,7 @@ export default function reducer(
       }
 
       return update(state, {
+        board: { $set: board },
         position: { $set: [x, y] },
       })
     }
