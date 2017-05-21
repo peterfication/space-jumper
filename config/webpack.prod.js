@@ -16,7 +16,6 @@ module.exports = webpackMerge(commonConfig, {
       'react',
       'react-dom',
       'react-ga',
-      'react-intl',
       'react-redux',
       'react-select',
       'react-sortable-hoc',
@@ -28,7 +27,7 @@ module.exports = webpackMerge(commonConfig, {
   output: {
     path: helpers.root('build'),
     filename: '[name]-[chunkhash].js',
-    publicPath: '/',
+    publicPath: '/space-jumper',
   },
 
   plugins: [
