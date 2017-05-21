@@ -48,17 +48,12 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
-        SPACE_MANAGER_COMMIT_HASH: JSON.stringify(child_process.spawnSync(
-          'git', ['rev-parse', 'HEAD']
-        ).stdout.toString()),
-        SPACE_MANAGER_COMMIT_DATE: JSON.stringify(child_process.spawnSync(
-          'git', ['show', '--pretty=%cI']
-        ).stdout.toString()),
       },
     }),
     new webpack.BannerPlugin("Copyright Peter Gundel"),
     new HtmlWebpackPlugin({
       template: helpers.root('app', 'index.tmpl.html'),
+      favicon: helpers.root('app', 'favicon.ico'),
     }),
     new ScriptExtHtmlWebpackPlugin({
       sync: 'vendor',
