@@ -10,6 +10,7 @@ export default function reducer(
     lives: 5,
     position: [0, 0],
     board: [],
+    bigJump: false,
   },
   action = {},
 ) {
@@ -27,27 +28,57 @@ export default function reducer(
     case actionTypes.KEY_DOWN: {
       const { keyCode } = action.payload
       const { position } = state
-      const board = JSON.parse(JSON.stringify(state.board))
       let [x, y] = position
 
-      // Remove previous platform from board
-      board[y][x] = 0
-
       // Movements
+      let move = false
+      const moveDistance = state.bigJump ? 2 : 1
       if (keyCode === 38) { // up
-        y -= 1
+        y -= moveDistance
+        move = true
       } else if (keyCode === 40) { // down
-        y += 1
+        y += moveDistance
+        move = true
       } else if (keyCode === 37) { // left
-        x -= 1
+        x -= moveDistance
+        move = true
       } else if (keyCode === 39) { // right
-        x += 1
+        x += moveDistance
+        move = true
       }
 
-      return update(state, {
-        board: { $set: board },
-        position: { $set: [x, y] },
-      })
+      if (move) {
+        // Remove previous platform from board
+        const board = JSON.parse(JSON.stringify(state.board))
+        const [xOld, yOld] = position
+        board[yOld][xOld] = 0
+
+        return update(state, {
+          board: { $set: board },
+          position: { $set: [x, y] },
+        })
+      }
+
+      // If shift is pressed, enable the big jump mode
+      if (keyCode === 16) {
+        return update(state, {
+          bigJump: { $set: true },
+        })
+      }
+
+      return state
+    }
+    case actionTypes.KEY_UP: {
+      const { keyCode } = action.payload
+
+      // If shift is released, disable the big jump mode
+      if (keyCode === 16) {
+        return update(state, {
+          bigJump: { $set: false },
+        })
+      }
+
+      return state
     }
     case actionTypes.PREPARE_GAME: {
       return update(state, {

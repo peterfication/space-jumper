@@ -21,6 +21,7 @@ export class App extends React.Component {
         setMode: PT.func,
         prepareGame: PT.func,
         keyDown: PT.func,
+        keyUp: PT.func,
       }),
       mode: PT.string,
     }
@@ -40,8 +41,12 @@ export class App extends React.Component {
     const handleKeyDown = (e) => {
       self.props.actions.keyDown(e.keyCode)
     }
-
     document.addEventListener('keydown', handleKeyDown, false)
+
+    const handleKeyUp = (e) => {
+      self.props.actions.keyUp(e.keyCode)
+    }
+    document.addEventListener('keyup', handleKeyUp, false)
   }
 
   startGame() {

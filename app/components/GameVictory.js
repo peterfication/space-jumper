@@ -5,9 +5,9 @@ import styles from './game-victory.scss'
 
 const GameVictory = props => (
   <div className={styles['game-victory-container']}>
-    <h1>Victroy!!!</h1>
+    <h1>Victory!!!</h1>
     <p>
-      Congragulations :)
+      Congratulations :)
     </p>
     <button onClick={() => props.showMenu()}>
       Back to menu

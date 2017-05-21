@@ -7,6 +7,7 @@ export class GameBoard extends React.Component {
 
   static get propTypes() {
     return {
+      bigJump: PT.bool,
       board: PT.arrayOf(PT.array),
       position: PT.array,
     }
@@ -18,7 +19,10 @@ export class GameBoard extends React.Component {
   }
 
   render() {
-    const { board } = this.props
+    const {
+      bigJump,
+      board,
+    } = this.props
 
     return (
       <div className={styles['game-board']}>
@@ -35,7 +39,9 @@ export class GameBoard extends React.Component {
                 {cell === 1 &&
                   <div className={styles.platform}>
                     {this.cellIsPosition(rowIndex, colIndex) &&
-                      <div className={styles.player} />
+                      <div className={styles.player}>
+                        {bigJump && <div className={styles['big-jump']} />}
+                      </div>
                     }
                   </div>
                 }
