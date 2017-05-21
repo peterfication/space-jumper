@@ -3,6 +3,9 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 
+/* eslint-disable */
+import _ from './config/analytics'
+/* eslint-enable */
 import store from './store'
 import ConnectedApp from './App'
 
