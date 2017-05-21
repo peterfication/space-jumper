@@ -7,12 +7,21 @@ const About = props => (
   <div className={styles['about-container']}>
     <h1>About</h1>
     <p>
-      Minions ipsum chasy wiiiii jeje poulet tikka masala butt jeje la bodaaa. Belloo! underweaaar
-      bappleees po kass wiiiii butt. Tatata bala tu wiiiii daa butt underweaaar hahaha hana dul
-      sae. Tatata bala tu po kass bappleees jiji tank yuuu! Poulet tikka masala para tú bappleees
-      wiiiii wiiiii jiji jiji hana dul sae. Ti aamoo! la bodaaa poopayee aaaaaah baboiii me want
-      bananaaa! Pepete wiiiii butt ti aamoo! Uuuhhh.
+      A small logical game about finding the right way 🎮
     </p>
+
+    <p>
+      It&apos;s open source! You can find the code on&nbsp;
+      <a href='https://github.com/peterfication/space-jumper'>
+        Github
+      </a>.
+    </p>
+
+    <h2>Contributors</h2>
+    <ul>
+      <li><a href='https://github.com/peterfication'>Peter Gundel</a></li>
+    </ul>
+
     <button onClick={() => props.showMenu()}>
       Back to menu
     </button>

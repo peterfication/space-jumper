@@ -12,6 +12,8 @@
 }
 
 .button {
+  text-decoration: none;
+  color: initial;
   text-align: center;
   width: 100%;
   padding: 15px 0;
@@ -23,6 +25,7 @@
   font-size: 16px;
 
   &:hover {
+    text-decoration: none;
     background: #CCC;
     color: #FFF;
   }

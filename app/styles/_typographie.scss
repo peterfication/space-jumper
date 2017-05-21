@@ -35,7 +35,11 @@ p {
 
 a {
   text-decoration: none;
-  color: initial;
+  color: #3498db;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 blockquote {
