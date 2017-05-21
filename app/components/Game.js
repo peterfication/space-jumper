@@ -16,6 +16,7 @@ export class Game extends React.Component {
         setLevel: PT.func,
         die: PT.func,
       }),
+      bigJump: PT.bool,
       board: PT.arrayOf(PT.array),
       lives: PT.number,
       level: PT.number,
@@ -31,13 +32,9 @@ export class Game extends React.Component {
 
     if (lives === 0) {
       this.gameOver()
-    }
-
-    if (!this.positionHasPlatform()) {
+    } else if (!this.positionHasPlatform()) {
       this.die()
-    }
-
-    if (this.platformCount() === 1) {
+    } else if (this.platformCount() === 1) {
       this.setLevel(level + 1)
     }
   }
@@ -81,6 +78,7 @@ export class Game extends React.Component {
 
   render() {
     const {
+      bigJump,
       board,
       lives,
       level,
@@ -94,13 +92,14 @@ export class Game extends React.Component {
             Level {level}
           </div>
           <div className={styles['platform-count']}>
-            Count of platforms: {this.platformCount()}
+            Platforms left: {this.platformCount()}
           </div>
           <div className={styles.lives}>
             Lives {lives}
           </div>
         </div>
         <GameBoard
+          bigJump={bigJump}
           board={board}
           position={position}
         />
@@ -111,6 +110,7 @@ export class Game extends React.Component {
 
 export default connect(
   state => ({
+    bigJump: state.bigJump,
     board: state.board,
     lives: state.lives,
     level: state.level,
