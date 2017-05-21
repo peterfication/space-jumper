@@ -10,7 +10,13 @@
     display: flex;
 
     .level {
+      flex: 1;
       text-align: left;
+    }
+
+    .platform-count {
+      flex: 2;
+      text-align: center;
     }
 
     .lives {

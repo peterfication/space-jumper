@@ -24,7 +24,10 @@ export class Game extends React.Component {
   }
 
   componentDidUpdate() {
-    const { lives } = this.props
+    const {
+      level,
+      lives,
+    } = this.props
 
     if (lives === 0) {
       this.gameOver()
@@ -32,6 +35,10 @@ export class Game extends React.Component {
 
     if (!this.positionHasPlatform()) {
       this.die()
+    }
+
+    if (this.platformCount() === 1) {
+      this.setLevel(level + 1)
     }
   }
 
@@ -65,6 +72,13 @@ export class Game extends React.Component {
     return cell === 1
   }
 
+  platformCount() {
+    const { board } = this.props
+
+    return board.reduce((acc, val) =>
+      acc + val.reduce((acc2, val2) => acc2 + val2), 0)
+  }
+
   render() {
     const {
       board,
@@ -79,6 +93,9 @@ export class Game extends React.Component {
           <div className={styles.level}>
             Level {level}
           </div>
+          <div className={styles['platform-count']}>
+            Count of platforms: {this.platformCount()}
+          </div>
           <div className={styles.lives}>
             Lives {lives}
           </div>
@@ -87,12 +104,6 @@ export class Game extends React.Component {
           board={board}
           position={position}
         />
-        <button onClick={() => this.setLevel(this.props.level + 1)}>
-          Increase Level
-        </button>
-        <button onClick={() => this.die()}>
-          Die
-        </button>
       </div>
     )
   }
