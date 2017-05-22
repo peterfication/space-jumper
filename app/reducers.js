@@ -46,16 +46,16 @@ export default function reducer(
       // Movements
       let move = false
       const moveDistance = state.bigJump ? 2 : 1
-      if (keyCode === 38) { // up
+      if (keyCode === 38 || keyCode === 75) { // up
         y -= moveDistance
         move = true
-      } else if (keyCode === 40) { // down
+      } else if (keyCode === 40 || keyCode === 74) { // down
         y += moveDistance
         move = true
-      } else if (keyCode === 37) { // left
+      } else if (keyCode === 37 || keyCode === 72) { // left
         x -= moveDistance
         move = true
-      } else if (keyCode === 39) { // right
+      } else if (keyCode === 39 || keyCode === 76) { // right
         x += moveDistance
         move = true
       }
