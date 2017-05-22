@@ -12,6 +12,7 @@ export default function reducer(
     mode: 'menu',
     position: [0, 0],
     showDie: false,
+    showLevelAccomplished: false,
   },
   action = {},
 ) {
@@ -28,6 +29,11 @@ export default function reducer(
       })
     }
     case actionTypes.CLOSE_DIE: {
+      return update(state, {
+        showDie: { $set: false },
+      })
+    }
+    case actionTypes.CLOSE_LEVEL_ACCOMPLISHED: {
       return update(state, {
         showDie: { $set: false },
       })
@@ -86,8 +92,15 @@ export default function reducer(
       }
 
       if (keyCode === 13) {
+        if (state.mode === 'game-victory') {
+          return update(state, {
+            mode: { $set: 'menu' },
+          })
+        }
+
         return update(state, {
           showDie: { $set: false },
+          showLevelAccomplished: { $set: false },
         })
       }
 
@@ -122,6 +135,11 @@ export default function reducer(
     case actionTypes.SET_MODE: {
       return update(state, {
         mode: { $set: action.payload.mode },
+      })
+    }
+    case actionTypes.SHOW_LEVEL_ACCOMPLISHED: {
+      return update(state, {
+        showLevelAccomplished: { $set: true },
       })
     }
     default:
