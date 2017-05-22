@@ -5,12 +5,13 @@ import levels from './levels'
 
 export default function reducer(
   state = {
-    level: 0,
-    mode: 'menu',
-    lives: 5,
-    position: [0, 0],
-    board: [],
     bigJump: false,
+    board: [],
+    level: 0,
+    lives: 5,
+    mode: 'menu',
+    position: [0, 0],
+    showDie: false,
   },
   action = {},
 ) {
@@ -23,12 +24,18 @@ export default function reducer(
         board: { $set: board },
         lives: { $set: (state.lives - 1) },
         position: { $set: startPosition },
+        showDie: { $set: true },
+      })
+    }
+    case actionTypes.CLOSE_DIE: {
+      return update(state, {
+        showDie: { $set: false },
       })
     }
     case actionTypes.KEY_DOWN: {
       const { keyCode } = action.payload
       const { position } = state
-      let [x, y] = position
+      let [x, y] = [...position]
 
       // Movements
       let move = false
@@ -75,6 +82,12 @@ export default function reducer(
       if (keyCode === 16) {
         return update(state, {
           bigJump: { $set: false },
+        })
+      }
+
+      if (keyCode === 13) {
+        return update(state, {
+          showDie: { $set: false },
         })
       }
 

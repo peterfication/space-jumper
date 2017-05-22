@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 
 import { actions } from '../actions'
 import GameBoard from './GameBoard'
+import GameDied from './GameDied'
 import styles from './game.scss'
 
 export class Game extends React.Component {
@@ -15,13 +16,21 @@ export class Game extends React.Component {
         setMode: PT.func,
         setLevel: PT.func,
         die: PT.func,
+        closeDie: PT.func,
       }),
       bigJump: PT.bool,
       board: PT.arrayOf(PT.array),
       lives: PT.number,
       level: PT.number,
       position: PT.array,
+      showDie: PT.bool,
     }
+  }
+
+  constructor() {
+    super()
+
+    this.closeDie = this.closeDie.bind(this)
   }
 
   componentDidUpdate() {
@@ -76,6 +85,10 @@ export class Game extends React.Component {
       acc + val.reduce((acc2, val2) => acc2 + val2), 0)
   }
 
+  closeDie() {
+    this.props.actions.closeDie()
+  }
+
   render() {
     const {
       bigJump,
@@ -83,6 +96,7 @@ export class Game extends React.Component {
       lives,
       level,
       position,
+      showDie,
     } = this.props
 
     return (
@@ -98,6 +112,7 @@ export class Game extends React.Component {
             Lives {lives}
           </div>
         </div>
+        {showDie && <GameDied closeDie={this.closeDie} />}
         <GameBoard
           bigJump={bigJump}
           board={board}
@@ -115,6 +130,7 @@ export default connect(
     lives: state.lives,
     level: state.level,
     position: state.position,
+    showDie: state.showDie,
   }),
   dispatch => ({
     actions: bindActionCreators(actions, dispatch),

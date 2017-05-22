@@ -9,7 +9,7 @@ const GameOver = props => (
     <p>
       You lost. Try again!
     </p>
-    <button onClick={() => props.showMenu()}>
+    <button onClick={props.showMenu}>
       Back to menu
     </button>
   </div>

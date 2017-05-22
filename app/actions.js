@@ -1,5 +1,6 @@
 export const actionTypes = {
   DIE: 'DIE',
+  CLOSE_DIE: 'CLOSE_DIE',
   KEY_DOWN: 'KEY_DOWN',
   KEY_UP: 'KEY_UP',
   PREPARE_GAME: 'PREPARE_GAME',
@@ -9,6 +10,10 @@ export const actionTypes = {
 
 function die() {
   return { type: actionTypes.DIE }
+}
+
+function closeDie() {
+  return { type: actionTypes.CLOSE_DIE }
 }
 
 function keyDown(keyCode) {
@@ -45,6 +50,7 @@ function setMode(mode) {
 
 export const actions = {
   die,
+  closeDie,
   keyDown,
   keyUp,
   prepareGame,
