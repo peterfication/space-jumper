@@ -22,7 +22,7 @@ const About = props => (
       <li><a href='https://github.com/peterfication'>Peter Gundel</a></li>
     </ul>
 
-    <button onClick={() => props.showMenu()}>
+    <button onClick={props.showMenu}>
       Back to menu
     </button>
   </div>

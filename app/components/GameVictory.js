@@ -9,7 +9,7 @@ const GameVictory = props => (
     <p>
       Congratulations :)
     </p>
-    <button onClick={() => props.showMenu()}>
+    <button onClick={props.showMenu}>
       Back to menu
     </button>
   </div>
