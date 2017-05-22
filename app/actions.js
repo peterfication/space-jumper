@@ -1,11 +1,13 @@
 export const actionTypes = {
   DIE: 'DIE',
   CLOSE_DIE: 'CLOSE_DIE',
+  CLOSE_LEVEL_ACCOMPLISHED: 'CLOSE_LEVEL_ACCOMPLISHED',
   KEY_DOWN: 'KEY_DOWN',
   KEY_UP: 'KEY_UP',
   PREPARE_GAME: 'PREPARE_GAME',
   SET_LEVEL: 'SET_LEVEL',
   SET_MODE: 'SET_MODE',
+  SHOW_LEVEL_ACCOMPLISHED: 'SHOW_LEVEL_ACCOMPLISHED',
 }
 
 function die() {
@@ -14,6 +16,10 @@ function die() {
 
 function closeDie() {
   return { type: actionTypes.CLOSE_DIE }
+}
+
+function closeLevelAccomplished() {
+  return { type: actionTypes.CLOSE_LEVEL_ACCOMPLISHED }
 }
 
 function keyDown(keyCode) {
@@ -48,14 +54,20 @@ function setMode(mode) {
   }
 }
 
+function showLevelAccomplished() {
+  return { type: actionTypes.SHOW_LEVEL_ACCOMPLISHED }
+}
+
 export const actions = {
   die,
   closeDie,
+  closeLevelAccomplished,
   keyDown,
   keyUp,
   prepareGame,
   setMode,
   setLevel,
+  showLevelAccomplished,
 }
 
 export default {

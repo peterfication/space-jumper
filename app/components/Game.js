@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux'
 import { actions } from '../actions'
 import GameBoard from './GameBoard'
 import GameDied from './GameDied'
+import GameLevelAccomplished from './GameLevelAccomplished'
 import styles from './game.scss'
 
 export class Game extends React.Component {
@@ -13,10 +14,12 @@ export class Game extends React.Component {
   static get propTypes() {
     return {
       actions: PT.shape({
-        setMode: PT.func,
-        setLevel: PT.func,
-        die: PT.func,
         closeDie: PT.func,
+        closeLevelAccomplished: PT.func,
+        die: PT.func,
+        setLevel: PT.func,
+        setMode: PT.func,
+        showLevelAccomplished: PT.func,
       }),
       bigJump: PT.bool,
       board: PT.arrayOf(PT.array),
@@ -24,6 +27,7 @@ export class Game extends React.Component {
       level: PT.number,
       position: PT.array,
       showDie: PT.bool,
+      showLevelAccomplished: PT.bool,
     }
   }
 
@@ -31,6 +35,7 @@ export class Game extends React.Component {
     super()
 
     this.closeDie = this.closeDie.bind(this)
+    this.closeLevelAccomplished = this.closeLevelAccomplished.bind(this)
   }
 
   componentDidUpdate() {
@@ -40,24 +45,17 @@ export class Game extends React.Component {
     } = this.props
 
     if (lives === 0) {
-      this.gameOver()
+      this.props.actions.setMode('game-over')
     } else if (!this.positionHasPlatform()) {
-      this.die()
+      this.props.actions.die()
     } else if (this.platformCount() === 1) {
+      this.props.actions.showLevelAccomplished()
       this.setLevel(level + 1)
     }
   }
 
   setLevel(level) {
     this.props.actions.setLevel(level)
-  }
-
-  die() {
-    this.props.actions.die()
-  }
-
-  gameOver() {
-    this.props.actions.setMode('game-over')
   }
 
   // Check whether the player is on a platform
@@ -89,6 +87,10 @@ export class Game extends React.Component {
     this.props.actions.closeDie()
   }
 
+  closeLevelAccomplished() {
+    this.props.actions.closeLevelAccomplished()
+  }
+
   render() {
     const {
       bigJump,
@@ -97,6 +99,7 @@ export class Game extends React.Component {
       level,
       position,
       showDie,
+      showLevelAccomplished,
     } = this.props
 
     return (
@@ -113,6 +116,8 @@ export class Game extends React.Component {
           </div>
         </div>
         {showDie && <GameDied closeDie={this.closeDie} />}
+        {showLevelAccomplished &&
+          <GameLevelAccomplished closeLevelAccomplished={this.closeLevelAccomplished} />}
         <GameBoard
           bigJump={bigJump}
           board={board}
@@ -131,6 +136,7 @@ export default connect(
     level: state.level,
     position: state.position,
     showDie: state.showDie,
+    showLevelAccomplished: state.showLevelAccomplished,
   }),
   dispatch => ({
     actions: bindActionCreators(actions, dispatch),

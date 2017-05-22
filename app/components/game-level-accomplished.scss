@@ -1,0 +1,18 @@
+@import '../styles/elements';
+
+.game-level-accomplished-container {
+  position: absolute;
+  background: #FFF;
+  left: 5px;
+  right: 5px;
+  top: 5px;
+  bottom: 5px;
+
+  h1 {
+    text-align: center;
+  }
+
+  button {
+    @extend .button
+  }
+}
