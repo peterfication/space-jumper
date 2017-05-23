@@ -114,6 +114,8 @@ export default function reducer(
         level: { $set: 1 },
         lives: { $set: 5 },
         position: { $set: levels[1].startPosition },
+        showDie: { $set: false },
+        showLevelAccomplished: { $set: false },
       })
     }
     case actionTypes.SET_LEVEL: {

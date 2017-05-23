@@ -52,6 +52,8 @@ export class Game extends React.Component {
     } else if (this.platformCount() === 1) {
       this.props.actions.showLevelAccomplished()
       this.setLevel(level + 1)
+    } else if (!this.playerCanStillMove()) {
+      this.props.actions.die()
     }
   }
 
@@ -75,6 +77,29 @@ export class Game extends React.Component {
 
     const cell = row[x]
     return cell === 1
+  }
+
+  // Check whether the player has any platform left that is reachable
+  // * 1 or 2 above from the player
+  // * 1 or 2 below from the player
+  // * 1 or 2 left from the player
+  // * 1 or 2 right from the player
+  playerCanStillMove() {
+    const {
+      board,
+      position,
+    } = this.props
+    const [x, y] = position
+
+    return (board[y - 1] || [])[x] === 1 ||
+      (board[y - 2] || [])[x] === 1 ||
+      (board[y - 1] || [])[x] === 1 ||
+      (board[y + 1] || [])[x] === 1 ||
+      (board[y + 2] || [])[x] === 1 ||
+      board[y][x - 2] === 1 ||
+      board[y][x - 1] === 1 ||
+      board[y][x + 1] === 1 ||
+      board[y][x + 2] === 1
   }
 
   platformCount() {
