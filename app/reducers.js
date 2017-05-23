@@ -13,6 +13,7 @@ export default function reducer(
     position: [0, 0],
     showDie: false,
     showLevelAccomplished: false,
+    helptext: '',
   },
   action = {},
 ) {
@@ -108,9 +109,10 @@ export default function reducer(
     }
     case actionTypes.PREPARE_GAME: {
       return update(state, {
+        board: { $set: levels[1].board },
+        helptext: { $set: levels[1].helptext },
         level: { $set: 1 },
         lives: { $set: 5 },
-        board: { $set: levels[1].board },
         position: { $set: levels[1].startPosition },
       })
     }
@@ -119,10 +121,11 @@ export default function reducer(
       const levelData = levels[level]
 
       if (levelData) {
-        const { board, startPosition } = levelData
+        const { board, helptext, startPosition } = levelData
         return update(state, {
-          level: { $set: level },
           board: { $set: board },
+          helptext: { $set: helptext },
+          level: { $set: level },
           position: { $set: startPosition },
         })
       }

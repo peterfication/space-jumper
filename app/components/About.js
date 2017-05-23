@@ -19,9 +19,9 @@ const About = props => (
 
     <h2>Disclaimer</h2>
     <p>
-      The idea for SpaceJumper is orignially from an old DOS game. I can&apos;t find it anywhere online
-      because I forgot the name. So if somebody knows the name or even has a copy of it I would be
-      very happy to hear about it! :)
+      The idea for SpaceJumper is orignially from an old DOS game. I can&apos;t
+      find it anywhere online because I forgot the name. So if somebody knows
+      the name or even has a copy of it I would be very happy to hear about it! :)
     </p>
 
     <h2>Contributors</h2>
