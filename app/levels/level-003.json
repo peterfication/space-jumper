@@ -1,0 +1,12 @@
+{
+  "level": 3,
+  "startPosition": [1, 1],
+  "helptext": "When you hold the shift key, you can make a big jump <br /> and jump over a platform.",
+  "board": [
+    [0, 0, 0, 0, 0],
+    [0, 1, 0, 1, 0],
+    [0, 1, 0, 1, 0],
+    [0, 1, 0, 1, 0],
+    [0, 0, 0, 0, 0]
+  ]
+}
