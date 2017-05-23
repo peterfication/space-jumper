@@ -23,6 +23,7 @@ export class Game extends React.Component {
       }),
       bigJump: PT.bool,
       board: PT.arrayOf(PT.array),
+      helptext: PT.string,
       lives: PT.number,
       level: PT.number,
       position: PT.array,
@@ -95,6 +96,7 @@ export class Game extends React.Component {
     const {
       bigJump,
       board,
+      helptext,
       lives,
       level,
       position,
@@ -115,6 +117,7 @@ export class Game extends React.Component {
             Lives {lives}
           </div>
         </div>
+        <div dangerouslySetInnerHTML={{ __html: helptext }} className={styles.helptext} />
         {showDie && <GameDied closeDie={this.closeDie} />}
         {showLevelAccomplished &&
           <GameLevelAccomplished closeLevelAccomplished={this.closeLevelAccomplished} />}
@@ -132,6 +135,7 @@ export default connect(
   state => ({
     bigJump: state.bigJump,
     board: state.board,
+    helptext: state.helptext,
     lives: state.lives,
     level: state.level,
     position: state.position,
