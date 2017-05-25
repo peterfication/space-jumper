@@ -1,5 +1,4 @@
 {
-  "level": 1,
   "startPosition": [2, 1],
   "helptext": "Use the arrow keys to touch every platform exactly once. <br /> You die if you jump next to a platform.",
   "board": [

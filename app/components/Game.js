@@ -142,7 +142,8 @@ export class Game extends React.Component {
             Lives {lives}
           </div>
         </div>
-        <div dangerouslySetInnerHTML={{ __html: helptext }} className={styles.helptext} />
+        {helptext !== '' &&
+          <div dangerouslySetInnerHTML={{ __html: helptext }} className={styles.helptext} />}
         {showDie && <GameDied closeDie={this.closeDie} />}
         {showLevelAccomplished &&
           <GameLevelAccomplished closeLevelAccomplished={this.closeLevelAccomplished} />}
