@@ -7,6 +7,7 @@ import { actions } from '../actions'
 import GameBoard from './GameBoard'
 import GameDied from './GameDied'
 import GameLevelAccomplished from './GameLevelAccomplished'
+import { platformCount } from '../lib/gameHelpers'
 import styles from './game.scss'
 
 export class Game extends React.Component {
@@ -39,76 +40,6 @@ export class Game extends React.Component {
     this.closeLevelAccomplished = this.closeLevelAccomplished.bind(this)
   }
 
-  componentDidUpdate() {
-    const {
-      level,
-      lives,
-    } = this.props
-
-    if (lives === 0) {
-      this.props.actions.setMode('game-over')
-    } else if (!this.positionHasPlatform()) {
-      this.props.actions.die()
-    } else if (this.platformCount() === 1) {
-      this.props.actions.showLevelAccomplished()
-      this.setLevel(level + 1)
-    } else if (!this.playerCanStillMove()) {
-      this.props.actions.die()
-    }
-  }
-
-  setLevel(level) {
-    this.props.actions.setLevel(level)
-  }
-
-  // Check whether the player is on a platform
-  positionHasPlatform() {
-    const {
-      board,
-      position,
-    } = this.props
-    const [x, y] = position
-
-    const row = board[y]
-    // Check if player is outside of board
-    if (!row) {
-      return false
-    }
-
-    const cell = row[x]
-    return cell === 1
-  }
-
-  // Check whether the player has any platform left that is reachable
-  // * 1 or 2 above from the player
-  // * 1 or 2 below from the player
-  // * 1 or 2 left from the player
-  // * 1 or 2 right from the player
-  playerCanStillMove() {
-    const {
-      board,
-      position,
-    } = this.props
-    const [x, y] = position
-
-    return (board[y - 1] || [])[x] === 1 ||
-      (board[y - 2] || [])[x] === 1 ||
-      (board[y - 1] || [])[x] === 1 ||
-      (board[y + 1] || [])[x] === 1 ||
-      (board[y + 2] || [])[x] === 1 ||
-      board[y][x - 2] === 1 ||
-      board[y][x - 1] === 1 ||
-      board[y][x + 1] === 1 ||
-      board[y][x + 2] === 1
-  }
-
-  platformCount() {
-    const { board } = this.props
-
-    return board.reduce((acc, val) =>
-      acc + val.reduce((acc2, val2) => acc2 + val2), 0)
-  }
-
   closeDie() {
     this.props.actions.closeDie()
   }
@@ -136,7 +67,7 @@ export class Game extends React.Component {
             Level {level}
           </div>
           <div className={styles['platform-count']}>
-            Platforms left: {this.platformCount()}
+            Platforms left: {platformCount(board)}
           </div>
           <div className={styles.lives}>
             Lives {lives}
