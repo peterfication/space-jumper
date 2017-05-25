@@ -4,6 +4,7 @@ export const actionTypes = {
   CLOSE_LEVEL_ACCOMPLISHED: 'CLOSE_LEVEL_ACCOMPLISHED',
   KEY_DOWN: 'KEY_DOWN',
   KEY_UP: 'KEY_UP',
+  MOVE: 'MOVE',
   PREPARE_GAME: 'PREPARE_GAME',
   SET_LEVEL: 'SET_LEVEL',
   SET_MODE: 'SET_MODE',
@@ -36,6 +37,13 @@ function keyUp(keyCode) {
   }
 }
 
+function move(moveValue) {
+  return {
+    type: actionTypes.MOVE,
+    payload: { moveValue },
+  }
+}
+
 function prepareGame() {
   return { type: actionTypes.PREPARE_GAME }
 }
@@ -64,6 +72,7 @@ export const actions = {
   closeLevelAccomplished,
   keyDown,
   keyUp,
+  move,
   prepareGame,
   setMode,
   setLevel,
