@@ -15,8 +15,10 @@ const GameOver = props => (
   </div>
 )
 
-GameOver.propTypes = {
-  showMenu: PT.func,
+if (process.env.NODE_ENV !== 'production') {
+  GameOver.propTypes = {
+    showMenu: PT.func,
+  }
 }
 
 export default GameOver

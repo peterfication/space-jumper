@@ -12,8 +12,10 @@ const GameLevelAccomplished = props => (
   </div>
 )
 
-GameLevelAccomplished.propTypes = {
-  closeLevelAccomplished: PT.func,
+if (process.env.NODE_ENV !== 'production') {
+  GameLevelAccomplished.propTypes = {
+    closeLevelAccomplished: PT.func,
+  }
 }
 
 export default GameLevelAccomplished
