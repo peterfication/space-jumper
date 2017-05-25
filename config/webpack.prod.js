@@ -12,13 +12,10 @@ module.exports = webpackMerge(commonConfig, {
     app: [helpers.root('app', 'main.js')],
     vendor: [
       'babel-polyfill',
-      'classnames',
       'react',
       'react-dom',
       'react-ga',
       'react-redux',
-      'react-select',
-      'react-sortable-hoc',
       'react-tap-event-plugin',
       'redux',
       'redux-saga',
