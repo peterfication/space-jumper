@@ -21,6 +21,7 @@ module.exports = webpackMerge(commonConfig, {
       'react-sortable-hoc',
       'react-tap-event-plugin',
       'redux',
+      'redux-saga',
     ],
   },
 
