@@ -10,9 +10,11 @@ const Menu = props => (
   </div>
 )
 
-Menu.propTypes = {
-  showAbout: PT.func,
-  startGame: PT.func,
+if (process.env.NODE_ENV !== 'production') {
+  Menu.propTypes = {
+    showAbout: PT.func,
+    startGame: PT.func,
+  }
 }
 
 export default Menu

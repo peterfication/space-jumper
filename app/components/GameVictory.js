@@ -15,8 +15,10 @@ const GameVictory = props => (
   </div>
 )
 
-GameVictory.propTypes = {
-  showMenu: PT.func,
+if (process.env.NODE_ENV !== 'production') {
+  GameVictory.propTypes = {
+    showMenu: PT.func,
+  }
 }
 
 export default GameVictory
