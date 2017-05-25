@@ -41,41 +41,6 @@ export default function reducer(
     }
     case actionTypes.KEY_DOWN: {
       const { keyCode } = action.payload
-      const {
-        position,
-        showDie,
-        showLevelAccomplished,
-      } = state
-      let [x, y] = [...position]
-
-      // Movements
-      let move = false
-      const moveDistance = state.bigJump ? 2 : 1
-      if (keyCode === 38 || keyCode === 75) { // up
-        y -= moveDistance
-        move = true
-      } else if (keyCode === 40 || keyCode === 74) { // down
-        y += moveDistance
-        move = true
-      } else if (keyCode === 37 || keyCode === 72) { // left
-        x -= moveDistance
-        move = true
-      } else if (keyCode === 39 || keyCode === 76) { // right
-        x += moveDistance
-        move = true
-      }
-
-      if (move && !showDie && !showLevelAccomplished) {
-        // Remove previous platform from board
-        const board = JSON.parse(JSON.stringify(state.board))
-        const [xOld, yOld] = position
-        board[yOld][xOld] = 0
-
-        return update(state, {
-          board: { $set: board },
-          position: { $set: [x, y] },
-        })
-      }
 
       // If shift is pressed, enable the big jump mode
       if (keyCode === 16) {
@@ -110,6 +75,22 @@ export default function reducer(
       }
 
       return state
+    }
+    case actionTypes.MOVE: {
+      const { moveValue } = action.payload
+      const [x, y] = state.position
+      // Deep copy board because it needs to be mutated
+      const board = JSON.parse(JSON.stringify(state.board))
+      // Remove previous platform from board
+      board[y][x] = 0
+
+      return update(state, {
+        board: { $set: board },
+        position: { $set: [
+          x + moveValue.x,
+          y + moveValue.y,
+        ] },
+      })
     }
     case actionTypes.PREPARE_GAME: {
       return update(state, {
