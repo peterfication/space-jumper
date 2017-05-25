@@ -7,13 +7,13 @@ export default function reducer(
   state = {
     bigJump: false,
     board: [],
+    helptext: '',
     level: 0,
     lives: 5,
     mode: 'menu',
     position: [0, 0],
     showDie: false,
     showLevelAccomplished: false,
-    helptext: '',
   },
   action = {},
 ) {
