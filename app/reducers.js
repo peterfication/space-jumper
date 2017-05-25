@@ -41,7 +41,11 @@ export default function reducer(
     }
     case actionTypes.KEY_DOWN: {
       const { keyCode } = action.payload
-      const { position } = state
+      const {
+        position,
+        showDie,
+        showLevelAccomplished,
+      } = state
       let [x, y] = [...position]
 
       // Movements
@@ -61,7 +65,7 @@ export default function reducer(
         move = true
       }
 
-      if (move) {
+      if (move && !showDie && !showLevelAccomplished) {
         // Remove previous platform from board
         const board = JSON.parse(JSON.stringify(state.board))
         const [xOld, yOld] = position
