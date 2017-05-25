@@ -36,7 +36,7 @@ export default function reducer(
     }
     case actionTypes.CLOSE_LEVEL_ACCOMPLISHED: {
       return update(state, {
-        showDie: { $set: false },
+        showLevelAccomplished: { $set: false },
       })
     }
     case actionTypes.KEY_DOWN: {
