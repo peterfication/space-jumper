@@ -2,6 +2,11 @@
 @import './typographie';
 @import './variables';
 
+@import '../../node_modules/csshake/scss/tools.scss';
+:global(.shake-hard){
+  @include do-shake('shake-hard', 20, 20, 7);
+}
+
 .container {
   position: fixed;
   width: 100%;

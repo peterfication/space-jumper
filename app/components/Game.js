@@ -18,6 +18,7 @@ export class Game extends React.Component {
         closeDie: PT.func,
         closeLevelAccomplished: PT.func,
         die: PT.func,
+        move: PT.func,
         setLevel: PT.func,
         setMode: PT.func,
         showLevelAccomplished: PT.func,
@@ -38,6 +39,7 @@ export class Game extends React.Component {
 
     this.closeDie = this.closeDie.bind(this)
     this.closeLevelAccomplished = this.closeLevelAccomplished.bind(this)
+    this.move = this.move.bind(this)
   }
 
   closeDie() {
@@ -46,6 +48,10 @@ export class Game extends React.Component {
 
   closeLevelAccomplished() {
     this.props.actions.closeLevelAccomplished()
+  }
+
+  move(moveValue) {
+    this.props.actions.move(moveValue)
   }
 
   render() {
@@ -81,6 +87,7 @@ export class Game extends React.Component {
         <GameBoard
           bigJump={bigJump}
           board={board}
+          move={this.move}
           position={position}
         />
       </div>

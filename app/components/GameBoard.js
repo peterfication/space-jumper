@@ -9,13 +9,43 @@ export class GameBoard extends React.Component {
     return {
       bigJump: PT.bool,
       board: PT.arrayOf(PT.array),
+      move: PT.func,
       position: PT.array,
     }
+  }
+
+  constructor() {
+    super()
+
+    this.clickPlatforum = this.clickPlatform.bind(this)
   }
 
   cellIsPosition(rowIndex, colIndex) {
     return (colIndex === this.props.position[0] &&
       rowIndex === this.props.position[1])
+  }
+
+  // Handle a click on a platform
+  clickPlatform(e, rowIndex, colIndex) {
+    const [x, y] = this.props.position
+    // Calculate the moveValue via the click on the platform
+    const moveValue = {
+      x: colIndex - x,
+      y: rowIndex - y,
+    }
+    const validHorizontalMove = moveValue.y === 0 && Math.abs(moveValue.x) <= 2
+    const validVerticalMove = moveValue.x === 0 && Math.abs(moveValue.y) <= 2
+
+    if (validHorizontalMove || validVerticalMove) {
+      this.props.move(moveValue)
+    } else {
+      // On an invalid move, shake the clicked platform
+      const target = e.target
+      target.classList.add('shake-hard')
+      setTimeout(() => {
+        target.classList.remove('shake-hard')
+      }, 200)
+    }
   }
 
   render() {
@@ -37,13 +67,16 @@ export class GameBoard extends React.Component {
                 className={styles['game-board-cell']}
               >
                 {cell === 1 &&
-                  <div className={styles.platform}>
+                  <button
+                    className={styles.platform}
+                    onClick={e => this.clickPlatform(e, rowIndex, colIndex)}
+                  >
                     {this.cellIsPosition(rowIndex, colIndex) &&
                       <div className={styles.player}>
                         {bigJump && <div className={styles['big-jump']} />}
                       </div>
                     }
-                  </div>
+                  </button>
                 }
               </div>
             ))}
