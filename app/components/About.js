@@ -29,6 +29,16 @@ const About = props => (
       <li><a href='https://github.com/peterfication'>Peter Gundel</a></li>
     </ul>
 
+    <h2>Version</h2>
+    <p>
+      Commit:&nbsp;
+      <a href={`https://github.com/peterfication/space-jumper/tree/${process.env.COMMIT_HASH}`}>
+        {process.env.COMMIT_HASH}
+      </a>
+      <br />
+      Date: {process.env.COMMIT_DATE}
+    </p>
+
     <button onClick={props.showMenu}>
       Back to menu
     </button>
