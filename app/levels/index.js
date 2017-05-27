@@ -5,6 +5,7 @@ import level004 from './level-004.json'
 import level005 from './level-005.json'
 import level006 from './level-006.json'
 import level007 from './level-007.json'
+import level008 from './level-008.json'
 
 export default {
   1: level001,
@@ -14,4 +15,5 @@ export default {
   5: level005,
   6: level006,
   7: level007,
+  8: level008,
 }
