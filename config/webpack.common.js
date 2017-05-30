@@ -48,6 +48,12 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
+        COMMIT_HASH: JSON.stringify(child_process.spawnSync(
+          'git', ['rev-parse', 'HEAD']
+        ).stdout.toString()),
+        COMMIT_DATE: JSON.stringify(child_process.spawnSync(
+          'git', ['log', '-1', '--format=%cd', '--date=format:%Y-%m-%d']
+        ).stdout.toString()),
       },
     }),
     new webpack.BannerPlugin("Copyright Peter Gundel"),
