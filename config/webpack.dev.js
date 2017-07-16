@@ -5,7 +5,6 @@ var webpack      = require('webpack'),
     commonConfig = require('./webpack.common.js');
 
 module.exports = webpackMerge(commonConfig, {
-  debug: true,
   devtool: 'cheap-module-eval-source-map',
 
   entry: ['babel-polyfill', helpers.root('app', 'main.js')],
