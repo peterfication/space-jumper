@@ -68,3 +68,27 @@ describe('playerCannotMoveAnymore', () => {
     })
   })
 })
+
+describe('platformCount', () => {
+  it('does not fail on an empty board', () => {
+    expect(gameHelpers.platformCount([])).toEqual(0)
+  })
+
+  it('counts the 1s of the board', () => {
+    const board = [
+      [0, 1, 1],
+      [0, 1, 0],
+      [1, 1, 1],
+    ]
+    expect(gameHelpers.platformCount(board)).toEqual(6)
+  })
+
+  it('does not fail on nulls', () => {
+    const board = [
+      [0, 1, 1],
+      [0, 1, null],
+      [1, 1, 1],
+    ]
+    expect(gameHelpers.platformCount(board)).toEqual(6)
+  })
+})
