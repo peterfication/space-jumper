@@ -4,45 +4,59 @@ var webpack = require('webpack')
 var helpers = require('./helpers')
 var child_process = require('child_process')
 
-var includes = [helpers.root('app'), helpers.root('node_modules', 's2b-react-kit')]
+var includes = [helpers.root('app')]
 
 module.exports = {
   module: {
-    loaders: [
-      {
-        test: /\.json$/,
-        loader: 'json',
-      },
+    rules: [
       {
         test: /\.js$/,
-        loader: 'babel',
         include: includes,
-        query: {
-          plugins: ['transform-object-rest-spread'],
-          presets: ['react', 'es2015'],
-        },
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              plugins: ['transform-object-rest-spread'],
+              presets: ['react', 'es2015'],
+            },
+          },
+        ],
       },
       {
         test: /\.scss$/,
         include: includes,
-        loader: 'style!css?modules&importLoaders=1&localIdentName=[local]___[hash:base64:5]!sass!postcss',
-      },
-      {
-        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        include: includes,
-        loader: 'url-loader?limit=10000&mimetype=application/font-woff',
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[local]___[hash:base64:5]',
+            },
+          },
+          'sass-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: loader => [
+                require('autoprefixer')(),
+              ],
+            },
+          },
+        ],
       },
       {
         test: /\.(jpg|jpeg|png|gif|svg)$/,
         include: includes,
-        loader: 'file-loader',
+        use: [
+          {
+            loader: 'file-loader',
+          }
+        ],
       },
     ],
   },
-
-  postcss: [
-    require('autoprefixer'),
-  ],
 
   plugins: [
     new webpack.DefinePlugin({

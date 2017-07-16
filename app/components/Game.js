@@ -80,6 +80,7 @@ export class Game extends React.Component {
           </div>
         </div>
         {helptext !== '' &&
+          // eslint-disable-next-line react/no-danger
           <div dangerouslySetInnerHTML={{ __html: helptext }} className={styles.helptext} />}
         {showDie && <GameDied closeDie={this.closeDie} />}
         {showLevelAccomplished &&
