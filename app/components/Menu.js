@@ -12,8 +12,8 @@ const Menu = props => (
 
 if (process.env.NODE_ENV !== 'production') {
   Menu.propTypes = {
-    showAbout: PT.func,
-    startGame: PT.func,
+    showAbout: PT.func.isRequired,
+    startGame: PT.func.isRequired,
   }
 }
 

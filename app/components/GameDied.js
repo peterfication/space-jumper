@@ -13,7 +13,7 @@ const GameDied = props => (
 )
 
 GameDied.propTypes = {
-  closeDie: PT.func,
+  closeDie: PT.func.isRequired,
 }
 
 export default GameDied

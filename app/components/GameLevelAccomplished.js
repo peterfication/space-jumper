@@ -14,7 +14,7 @@ const GameLevelAccomplished = props => (
 
 if (process.env.NODE_ENV !== 'production') {
   GameLevelAccomplished.propTypes = {
-    closeLevelAccomplished: PT.func,
+    closeLevelAccomplished: PT.func.isRequired,
   }
 }
 

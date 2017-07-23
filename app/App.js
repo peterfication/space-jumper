@@ -14,16 +14,15 @@ import Menu from './components/Menu'
 import layout from './styles/layout.scss'
 
 export class App extends React.Component {
-
   static get propTypes() {
     return {
       actions: PT.shape({
-        setMode: PT.func,
-        prepareGame: PT.func,
-        keyDown: PT.func,
-        keyUp: PT.func,
-      }),
-      mode: PT.string,
+        setMode: PT.func.isRequired,
+        prepareGame: PT.func.isRequired,
+        keyDown: PT.func.isRequired,
+        keyUp: PT.func.isRequired,
+      }).isRequired,
+      mode: PT.string.isRequired,
     }
   }
 

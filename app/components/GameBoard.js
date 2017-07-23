@@ -4,13 +4,12 @@ import React from 'react'
 import styles from './game-board.scss'
 
 export class GameBoard extends React.Component {
-
   static get propTypes() {
     return {
-      bigJump: PT.bool,
-      board: PT.arrayOf(PT.array),
-      move: PT.func,
-      position: PT.array,
+      bigJump: PT.bool.isRequired,
+      board: PT.arrayOf(PT.array).isRequired,
+      move: PT.func.isRequired,
+      position: PT.array.isRequired,
     }
   }
 
@@ -58,11 +57,13 @@ export class GameBoard extends React.Component {
       <div className={styles['game-board']}>
         {board.map((row, rowIndex) => (
           <div
+            // eslint-disable-next-line react/no-array-index-key
             key={rowIndex}
             className={styles['game-board-row']}
           >
             {row.map((cell, colIndex) => (
               <div
+                // eslint-disable-next-line react/no-array-index-key
                 key={colIndex}
                 className={styles['game-board-cell']}
               >
