@@ -9,7 +9,6 @@ export default function reducer(
     board: [],
     helptext: '',
     level: 0,
-    lives: 5,
     mode: 'menu',
     position: [0, 0],
     showDie: false,
@@ -24,7 +23,6 @@ export default function reducer(
       // Reduce live and reset level
       return update(state, {
         board: { $set: board },
-        lives: { $set: (state.lives - 1) },
         position: { $set: startPosition },
         showDie: { $set: true },
       })
@@ -97,7 +95,6 @@ export default function reducer(
         board: { $set: levels[1].board },
         helptext: { $set: levels[1].helptext },
         level: { $set: 1 },
-        lives: { $set: 5 },
         position: { $set: levels[1].startPosition },
         showDie: { $set: false },
         showLevelAccomplished: { $set: false },

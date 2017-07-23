@@ -19,13 +19,6 @@ export function* keyDown(action) {
   }
 }
 
-export function* checkLives() {
-  const lives = yield select(state => state.lives)
-  if (lives <= 0) {
-    yield put(actions.setMode('game-over'))
-  }
-}
-
 export function* ensurePlayerIsOnPlatform() {
   const board = yield select(state => state.board)
   const position = yield select(state => state.position)
@@ -54,7 +47,6 @@ export function* checkPlatformCount() {
 }
 
 export default function* rootSaga() {
-  yield fork(takeEvery, actionTypes.DIE, checkLives)
   yield fork(takeEvery, actionTypes.KEY_DOWN, keyDown)
   yield fork(takeEvery, actionTypes.MOVE, ensurePlayerIsOnPlatform)
   yield fork(takeEvery, actionTypes.MOVE, checkPlatformCount)

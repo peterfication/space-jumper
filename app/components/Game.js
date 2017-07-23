@@ -26,7 +26,6 @@ export class Game extends React.Component {
       bigJump: PT.bool,
       board: PT.arrayOf(PT.array),
       helptext: PT.string,
-      lives: PT.number,
       level: PT.number,
       position: PT.array,
       showDie: PT.bool,
@@ -59,7 +58,6 @@ export class Game extends React.Component {
       bigJump,
       board,
       helptext,
-      lives,
       level,
       position,
       showDie,
@@ -74,9 +72,6 @@ export class Game extends React.Component {
           </div>
           <div className={styles['platform-count']}>
             Platforms left: {platformCount(board)}
-          </div>
-          <div className={styles.lives}>
-            Lives {lives}
           </div>
         </div>
         {helptext !== '' &&
@@ -101,7 +96,6 @@ export default connect(
     bigJump: state.bigJump,
     board: state.board,
     helptext: state.helptext,
-    lives: state.lives,
     level: state.level,
     position: state.position,
     showDie: state.showDie,
