@@ -17,7 +17,7 @@ const GameOver = props => (
 
 if (process.env.NODE_ENV !== 'production') {
   GameOver.propTypes = {
-    showMenu: PT.func,
+    showMenu: PT.func.isRequired,
   }
 }
 

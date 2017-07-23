@@ -16,11 +16,6 @@ module.exports = {
     },
   },
 
-  ecmaFeatures: {
-    jsx: true,
-    modules: true,
-  },
-
   env: {
     browser: true,
     commonjs: true,
@@ -45,6 +40,7 @@ module.exports = {
     'react/style-prop-object': 0, // Applies for non-HTML components too, which we don't want
     'jsx-a11y/no-static-element-interactions': 0, // causes a lot of styling difficulties
     'jsx-a11y/label-has-for': 0,
+    'jsx-a11y/href-no-hash': 0,
     'no-console': 2,
     'react/prefer-stateless-function': [2, { ignorePureComponents: true }],
   },

@@ -11,25 +11,24 @@ import { platformCount } from '../lib/gameHelpers'
 import styles from './game.scss'
 
 export class Game extends React.Component {
-
   static get propTypes() {
     return {
       actions: PT.shape({
-        closeDie: PT.func,
-        closeLevelAccomplished: PT.func,
-        die: PT.func,
-        move: PT.func,
-        setLevel: PT.func,
-        setMode: PT.func,
-        showLevelAccomplished: PT.func,
-      }),
-      bigJump: PT.bool,
-      board: PT.arrayOf(PT.array),
-      helptext: PT.string,
-      level: PT.number,
-      position: PT.array,
-      showDie: PT.bool,
-      showLevelAccomplished: PT.bool,
+        closeDie: PT.func.isRequired,
+        closeLevelAccomplished: PT.func.isRequired,
+        die: PT.func.isRequired,
+        move: PT.func.isRequired,
+        setLevel: PT.func.isRequired,
+        setMode: PT.func.isRequired,
+        showLevelAccomplished: PT.func.isRequired,
+      }).isRequired,
+      bigJump: PT.bool.isRequired,
+      board: PT.arrayOf(PT.array).isRequired,
+      helptext: PT.string.isRequired,
+      level: PT.number.isRequired,
+      position: PT.array.isRequired,
+      showDie: PT.bool.isRequired,
+      showLevelAccomplished: PT.bool.isRequired,
     }
   }
 

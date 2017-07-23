@@ -17,7 +17,7 @@ const GameVictory = props => (
 
 if (process.env.NODE_ENV !== 'production') {
   GameVictory.propTypes = {
-    showMenu: PT.func,
+    showMenu: PT.func.isRequired,
   }
 }
 

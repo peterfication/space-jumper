@@ -7,7 +7,8 @@ const About = props => (
   <div className={styles['about-container']}>
     <h1>About</h1>
     <p>
-      A small logical game about finding the right way 🎮
+      A small logical game about finding the right way
+      <span role='img' aria-label='game-controller'>🎮</span>
     </p>
 
     <p>
@@ -46,7 +47,7 @@ const About = props => (
 )
 
 About.propTypes = {
-  showMenu: PT.func,
+  showMenu: PT.func.isRequired,
 }
 
 export default About
