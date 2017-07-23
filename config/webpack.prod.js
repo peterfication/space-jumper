@@ -6,8 +6,6 @@ var webpack = require('webpack'),
     helpers      = require('./helpers');
 
 module.exports = webpackMerge(commonConfig, {
-  debug: false,
-
   entry: {
     app: [helpers.root('app', 'main.js')],
     vendor: [
@@ -29,8 +27,8 @@ module.exports = webpackMerge(commonConfig, {
   },
 
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.CommonsChunkPlugin('vendor', '[name]-[chunkhash].js'),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.js' }),
     new LodashModuleReplacementPlugin({
       path: true,
       flattening: true,
