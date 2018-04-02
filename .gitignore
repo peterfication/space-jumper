@@ -4,3 +4,4 @@ yarn-error.log
 build/
 e2e/reports/
 hs_err*.log
+cov

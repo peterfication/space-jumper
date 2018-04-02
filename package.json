@@ -4,9 +4,9 @@
   "description": "A small logical game",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test node --max-old-space-size=4096 node_modules/.bin/karma start config/karma.conf.js",
-    "test-ci": "NODE_ENV=test webpack --config ./config/webpack.test.js --bail && karma start config/karma.ci.conf.js --single-run",
-    "test-single": "NODE_ENV=test karma start config/karma.conf.js --single-run",
+    "jest": "jest --coverage --coverageDirectory=cov --coverageReporters=lcov --watch",
+    "test": "yarn jest",
+    "test-ci": "jest --maxWorkers=4",
     "start": "webpack-dev-server --config ./config/webpack.dev.js --progress --watch-poll",
     "build": "rm -Rf build && NODE_ENV=production webpack --config ./config/webpack.prod.js --progress --optimize-minimize",
     "deploy": "yarn run build && gh-pages -d build -m '🚀 Deploy a new version'",
@@ -14,10 +14,24 @@
   },
   "author": "Peter Gundel",
   "license": "MIT",
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)spec)\\.(jsx?)$",
+    "moduleDirectories": [
+      "node_modules",
+      "app"
+    ],
+    "moduleFileExtensions": [
+      "js"
+    ]
+  },
   "devDependencies": {
     "autoprefixer": "^6.4.0",
     "babel-core": "^6.13.2",
     "babel-eslint": "^7.1.1",
+    "babel-jest": "^22.4.3",
     "babel-loader": "^6.2.4",
     "babel-plugin-react-transform": "^2.0.2",
     "babel-plugin-transform-object-rest-spread": "^6.16.0",
@@ -37,16 +51,9 @@
     "glob": "^7.1.1",
     "html-webpack-plugin": "^2.22.0",
     "jasmine": "^2.6.0",
+    "jest": "^22.4.3",
     "json-loader": "^0.5.4",
     "jsverify": "^0.8.2",
-    "karma": "^1.7.0",
-    "karma-babel-preprocessor": "^6.0.1",
-    "karma-chrome-launcher": "^2.2.0",
-    "karma-cli": "^1.0.1",
-    "karma-jasmine": "^1.1.0",
-    "karma-spec-reporter": "^0.0.31",
-    "karma-webpack": "^2.0.4",
-    "karma-webpack-with-fast-source-maps": "^1.10.1",
     "lodash-webpack-plugin": "^0.10.7",
     "node-sass": "^3.13.0",
     "postcss": "^5.2.5",
