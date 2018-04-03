@@ -20,8 +20,7 @@ export class GameBoard extends React.Component {
   }
 
   cellIsPosition(rowIndex, colIndex) {
-    return (colIndex === this.props.position[0] &&
-      rowIndex === this.props.position[1])
+    return colIndex === this.props.position[0] && rowIndex === this.props.position[1]
   }
 
   // Handle a click on a platform
@@ -48,10 +47,7 @@ export class GameBoard extends React.Component {
   }
 
   render() {
-    const {
-      bigJump,
-      board,
-    } = this.props
+    const { bigJump, board } = this.props
 
     return (
       <div className={styles['game-board']}>
@@ -67,18 +63,18 @@ export class GameBoard extends React.Component {
                 key={colIndex}
                 className={styles['game-board-cell']}
               >
-                {cell === 1 &&
+                {cell === 1 && (
                   <button
                     className={styles.platform}
                     onClick={e => this.clickPlatform(e, rowIndex, colIndex)}
                   >
-                    {this.cellIsPosition(rowIndex, colIndex) &&
+                    {this.cellIsPosition(rowIndex, colIndex) && (
                       <div className={styles.player}>
                         {bigJump && <div className={styles['big-jump']} />}
                       </div>
-                    }
+                    )}
                   </button>
-                }
+                )}
               </div>
             ))}
           </div>

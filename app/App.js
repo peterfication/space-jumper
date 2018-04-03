@@ -37,12 +37,12 @@ export class App extends React.Component {
   componentWillMount() {
     const self = this
 
-    const handleKeyDown = (e) => {
+    const handleKeyDown = e => {
       self.props.actions.keyDown(e.keyCode)
     }
     document.addEventListener('keydown', handleKeyDown, false)
 
-    const handleKeyUp = (e) => {
+    const handleKeyUp = e => {
       self.props.actions.keyUp(e.keyCode)
     }
     document.addEventListener('keyup', handleKeyUp, false)
@@ -68,12 +68,7 @@ export class App extends React.Component {
       <div>
         <Header />
         <div className={layout.container}>
-          {mode === 'menu' &&
-            <Menu
-              showAbout={this.showAbout}
-              startGame={this.startGame}
-            />
-          }
+          {mode === 'menu' && <Menu showAbout={this.showAbout} startGame={this.startGame} />}
           {mode === 'about' && <About showMenu={this.showMenu} />}
           {mode === 'game' && <Game />}
           {mode === 'game-victory' && <GameVictory showMenu={this.showMenu} />}

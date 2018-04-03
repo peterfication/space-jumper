@@ -2,7 +2,7 @@
 
 .game-died-container {
   position: absolute;
-  background: #FFF;
+  background: #fff;
   left: 5px;
   right: 5px;
   top: 5px;
@@ -13,6 +13,6 @@
   }
 
   button {
-    @extend .button
+    @extend .button;
   }
 }

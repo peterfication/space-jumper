@@ -8,5 +8,6 @@ dependencies:
 
 test:
   override:
+    - yarn format && git diff --exit-code
     - yarn lint
     - yarn run test-ci

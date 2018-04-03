@@ -4,10 +4,10 @@
   max-width: 570px;
   top: 20px;
   margin: 0 auto;
-  background: #FFFFFF;
+  background: #ffffff;
   padding: 15px;
   border-radius: 10px;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, .2);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .button {
@@ -16,16 +16,16 @@
   text-align: center;
   width: 100%;
   padding: 15px 0;
-  border: 1px solid #EEE;
+  border: 1px solid #eee;
   cursor: pointer;
   margin: 5px 0;
   border-radius: 3px;
-  background: #FFF;
+  background: #fff;
   font-size: 16px;
 
   &:hover {
     text-decoration: none;
-    background: #CCC;
-    color: #FFF;
+    background: #ccc;
+    color: #fff;
   }
 }
