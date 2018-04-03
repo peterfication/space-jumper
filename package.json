@@ -4,31 +4,38 @@
   "description": "A small logical game",
   "main": "index.js",
   "scripts": {
-    "jest": "jest --coverage --coverageDirectory=cov --coverageReporters=lcov --watch",
-    "test": "yarn jest",
-    "test-ci": "jest --maxWorkers=4",
-    "start": "webpack-dev-server --config ./config/webpack.dev.js --progress --watch-poll",
     "build": "rm -Rf build && NODE_ENV=production webpack --config ./config/webpack.prod.js --progress --optimize-minimize",
     "deploy": "yarn run build && gh-pages -d build -m '🚀 Deploy a new version'",
-    "lint": "eslint ."
+    "jest": "jest --coverage --coverageDirectory=cov --coverageReporters=lcov --watch",
+    "lint": "eslint .",
+    "start": "webpack-dev-server --config ./config/webpack.dev.js --progress --watch-poll",
+    "test": "yarn jest",
+    "test-ci": "jest --maxWorkers=4",
+    "typecheck": "tsc --noEmit"
   },
   "author": "Peter Gundel",
   "license": "MIT",
   "jest": {
     "transform": {
-      "^.+\\.js$": "babel-jest"
+      "^.+\\.js$": "babel-jest",
+      "^.+\\.ts$": "ts-jest"
     },
-    "testRegex": "(/__tests__/.*|(\\.|/)spec)\\.(jsx?)$",
+    "testRegex": "(/__tests__/.*|(\\.|/)spec)\\.(jsx?|tsx?)$",
     "moduleDirectories": [
       "node_modules",
       "app"
     ],
     "moduleFileExtensions": [
-      "js"
+      "js",
+      "ts"
     ]
   },
   "devDependencies": {
+    "@types/enzyme": "^3.1.9",
+    "@types/jest": "^22.2.2",
+    "@types/react": "^16.1.0",
     "autoprefixer": "^6.4.0",
+    "awesome-typescript-loader": "^4.0.1",
     "babel-core": "^6.13.2",
     "babel-eslint": "^7.1.1",
     "babel-jest": "^22.4.3",
@@ -61,7 +68,9 @@
     "react-transform-hmr": "^1.0.4",
     "sass-loader": "^4.0.0",
     "script-ext-html-webpack-plugin": "^1.7.1",
+    "source-map-loader": "^0.2.3",
     "style-loader": "^0.13.1",
+    "ts-jest": "^22.4.2",
     "url-loader": "^0.5.7",
     "webpack": "^3.3.0",
     "webpack-dev-server": "^1.14.1",
@@ -78,6 +87,7 @@
     "react-redux": "^5.0.4",
     "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.6.0",
-    "redux-saga": "^0.15.3"
+    "redux-saga": "^0.15.3",
+    "typescript": "^2.8.1"
   }
 }

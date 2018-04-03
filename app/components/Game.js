@@ -7,7 +7,7 @@ import { actions } from '../actions'
 import GameBoard from './GameBoard'
 import GameDied from './GameDied'
 import GameLevelAccomplished from './GameLevelAccomplished'
-import { platformCount } from '../lib/gameHelpers'
+import { platformCount } from '../lib/gameHelpers.ts'
 import styles from './game.scss'
 
 export class Game extends React.Component {
@@ -53,38 +53,23 @@ export class Game extends React.Component {
   }
 
   render() {
-    const {
-      bigJump,
-      board,
-      helptext,
-      level,
-      position,
-      showDie,
-      showLevelAccomplished,
-    } = this.props
+    const { bigJump, board, helptext, level, position, showDie, showLevelAccomplished } = this.props
 
     return (
       <div className={styles['game-container']}>
         <div className={styles['game-header']}>
-          <div className={styles.level}>
-            Level {level}
-          </div>
-          <div className={styles['platform-count']}>
-            Platforms left: {platformCount(board)}
-          </div>
+          <div className={styles.level}>Level {level}</div>
+          <div className={styles['platform-count']}>Platforms left: {platformCount(board)}</div>
         </div>
-        {helptext !== '' &&
+        {helptext !== '' && (
           // eslint-disable-next-line react/no-danger
-          <div dangerouslySetInnerHTML={{ __html: helptext }} className={styles.helptext} />}
+          <div dangerouslySetInnerHTML={{ __html: helptext }} className={styles.helptext} />
+        )}
         {showDie && <GameDied closeDie={this.closeDie} />}
-        {showLevelAccomplished &&
-          <GameLevelAccomplished closeLevelAccomplished={this.closeLevelAccomplished} />}
-        <GameBoard
-          bigJump={bigJump}
-          board={board}
-          move={this.move}
-          position={position}
-        />
+        {showLevelAccomplished && (
+          <GameLevelAccomplished closeLevelAccomplished={this.closeLevelAccomplished} />
+        )}
+        <GameBoard bigJump={bigJump} board={board} move={this.move} position={position} />
       </div>
     )
   }
@@ -104,4 +89,3 @@ export default connect(
     actions: bindActionCreators(actions, dispatch),
   }),
 )(Game)
-
