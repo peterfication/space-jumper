@@ -1,7 +1,7 @@
 import { put, fork, select, takeEvery } from 'redux-saga/effects'
 
 import { actions, actionTypes } from './actions'
-import { playerCannotMoveAnymore, platformCount } from './lib/gameHelpers'
+import { playerCannotMoveAnymore, platformCount } from './lib/gameHelpers.ts'
 import { calculateMovement } from './lib/keyCodeUtils'
 
 export function* keyDown(action) {
@@ -51,4 +51,3 @@ export default function* rootSaga() {
   yield fork(takeEvery, actionTypes.MOVE, ensurePlayerIsOnPlatform)
   yield fork(takeEvery, actionTypes.MOVE, checkPlatformCount)
 }
-
