@@ -1,11 +1,7 @@
 module.exports = {
   extends: 'airbnb',
 
-  plugins: [
-    'react',
-    'jsx-a11y',
-    'import',
-  ],
+  plugins: ['react', 'jsx-a11y', 'import'],
 
   parser: 'babel-eslint',
 
@@ -25,7 +21,6 @@ module.exports = {
   // View link below for react rules documentation
   // https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules
   rules: {
-
     semi: [2, 'never'],
     'no-multi-spaces': 1,
     'key-spacing': [1, { mode: 'strict' }],
@@ -43,6 +38,13 @@ module.exports = {
     'jsx-a11y/href-no-hash': 0,
     'no-console': 2,
     'react/prefer-stateless-function': [2, { ignorePureComponents: true }],
+
+    // conflicts with/handled by prettier
+    'arrow-parens': 0,
+    'jsx-quotes': 0,
+    'no-extra-semi': 0,
+    'no-confusing-arrow': 0,
+    semi: 0,
   },
 
   settings: {

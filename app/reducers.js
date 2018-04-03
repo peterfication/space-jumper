@@ -84,10 +84,9 @@ export default function reducer(
 
       return update(state, {
         board: { $set: board },
-        position: { $set: [
-          x + moveValue.x,
-          y + moveValue.y,
-        ] },
+        position: {
+          $set: [x + moveValue.x, y + moveValue.y],
+        },
       })
     }
     case actionTypes.PREPARE_GAME: {

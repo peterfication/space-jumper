@@ -6,12 +6,8 @@ import styles from './game-victory.scss'
 const GameVictory = props => (
   <div className={styles['game-victory-container']}>
     <h1>Victory!!!</h1>
-    <p>
-      Congratulations :)
-    </p>
-    <button onClick={props.showMenu}>
-      Back to menu
-    </button>
+    <p>Congratulations :)</p>
+    <button onClick={props.showMenu}>Back to menu</button>
   </div>
 )
 

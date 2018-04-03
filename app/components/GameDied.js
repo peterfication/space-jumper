@@ -6,9 +6,7 @@ import styles from './game-died.scss'
 const GameDied = props => (
   <div className={styles['game-died-container']}>
     <h1>You died</h1>
-    <button onClick={props.closeDie}>
-      Try the level again.
-    </button>
+    <button onClick={props.closeDie}>Try the level again.</button>
   </div>
 )
 
